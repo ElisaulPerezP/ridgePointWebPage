@@ -31,6 +31,9 @@ jobs:
       - name: Install js Dependencies
         run: npm install
 
+      - name: compile assets
+        run: npm run build
+
       - name: Generate key
         run: php artisan key:generate
 
