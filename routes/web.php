@@ -29,3 +29,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+Route::resource('carousels', carouselController::class)->middleware('web');
