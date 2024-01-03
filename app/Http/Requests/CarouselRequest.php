@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class carouselRequest extends FormRequest
+class CarouselRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
