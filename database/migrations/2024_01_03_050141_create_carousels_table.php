@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('carousels', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->string('message');
+            $table->date('creation_date');
+            $table->string('creation_place');
+            $table->string('image_rights');
             $table->timestamps();
         });
     }

@@ -13,7 +13,7 @@ class CarouselController extends Controller
      */
     public function index()
     {
-        //
+        return view('carousel.index');
     }
 
     /**
