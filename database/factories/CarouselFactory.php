@@ -21,13 +21,4 @@ class CarouselFactory extends Factory
             'image_rights' => 'All rights reserved',
         ];
     }
-
-    public function configure(): CarouselFactory
-    {
-        return $this->afterCreating(function (Carousel $carousel) {
-            $imagePath = 'images/muestra.jpg';
-            $imageUrl = Storage::url($imagePath);
-            $carousel->addMedia(public_path($imageUrl))->toMediaCollection('carousel_images');
-        });
-    }
 }
