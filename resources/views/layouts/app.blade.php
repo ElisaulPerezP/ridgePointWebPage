@@ -39,9 +39,12 @@
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
-    @include('layouts.navigation')
+    <div>
+        @include('layouts.navigation')
+        {{ $welcomeCarousel }}
+    </div>
     <main>
-        {{ $slot }}
+        {{ $contactForm }}
     </main>
 </div>
 

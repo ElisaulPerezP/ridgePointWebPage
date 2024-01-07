@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarouselController;
 /*
@@ -14,9 +15,8 @@ use App\Http\Controllers\CarouselController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [WelcomeController::class, 'start'])->name('welcome');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
