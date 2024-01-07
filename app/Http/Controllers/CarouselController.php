@@ -13,7 +13,8 @@ class CarouselController extends Controller
      */
     public function index()
     {
-        //
+        $carousels = Carousel::all();
+        return view('carousel.index')->with('carousels', $carousels);
     }
 
     /**
