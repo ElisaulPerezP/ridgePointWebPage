@@ -17,8 +17,22 @@ class CarouselControllerTest extends TestCase
         $permission = Permission::findOrCreate('api.index.product');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
         $permission->assignRole($role);
+
         $response=$this->actingAs($admin)->get(route( 'carousels.index'));
+
         $response->assertOk();
+        $response->assertViewIs('carousel.index');
+        $response->assertViewHas('carousels');
+        $response->assertSee('Ridge-Point Construction');
+        $response->assertSee('Home');
+        $response->assertSee('About');
+        $response->assertSee('Services');
+        $response->assertSee('Projects');
+        $response->assertSee('Blog');
+        $response->assertSee('Dropdown');
+        $response->assertSee('Contact');
+
+
 
         //crea un carousel con la fábrica ................... LISTO
         //como administrador consultar la ruta............... LISTO
