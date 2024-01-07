@@ -21,9 +21,11 @@ class Carousel extends Model  implements HasMedia
     ];
 
     protected $dates = ['creation_date'];
+
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('carousel_images')->singleFile();
     }
+
 
 }

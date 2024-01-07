@@ -1,36 +1,49 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Roboto:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Work+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-    </body>
+    <!-- Scripts -->
+    @vite([ 'resources/css/app.css',
+            'resources/css/main.css',
+            'resources/js/app.js',
+            'resources/vendor/bootstrap/css/bootstrap.min.css',
+            'resources/vendor/bootstrap-icons/bootstrap-icons.css',
+            'resources/vendor/fontawesome-free/css/all.min.css',
+            'resources/vendor/aos/aos.css',
+            'resources/vendor/glightbox/css/glightbox.min.css',
+            'resources/vendor/swiper/swiper-bundle.min.css',
+            'resources/vendor/bootstrap/js/bootstrap.bundle.min.js',
+            'resources/vendor/aos/aos.js',
+            'resources/vendor/glightbox/js/glightbox.min.js',
+            'resources/vendor/isotope-layout/isotope.pkgd.min.js',
+            'resources/vendor/swiper/swiper-bundle.min.js',
+            'resources/vendor/purecounter/purecounter_vanilla.js',
+            'resources/vendor/php-email-form/validate.js',
+            'resources/js/main.js',])
+</head>
+<body class="font-sans antialiased">
+<div class="min-h-screen bg-gray-100">
+    @include('layouts.navigation')
+    <main>
+        {{ $slot }}
+    </main>
+</div>
+
+</body>
 </html>
