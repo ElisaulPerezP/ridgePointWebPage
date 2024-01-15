@@ -6,11 +6,16 @@
 * License: https://bootstrapmade.com/license/
 */
 import AOS from 'aos';
-import 'aos/dist/aos.css';
-
+import 'bootstrap';
 document.addEventListener('DOMContentLoaded', () => {
   "use strict";
 
+  AOS.init({
+    duration: 800,
+    easing: 'slide',
+    once: true,
+    mirror: false
+  });
   /**
    * Preloader
    */
@@ -97,9 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
   /**
    * Initiate glightbox
    */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  //const glightbox = GLightbox({
+  //  selector: '.glightbox'
+  //});
 
   /**
    * Porfolio isotope and filter
@@ -209,8 +214,4 @@ document.addEventListener('DOMContentLoaded', () => {
       mirror: false
     });
   }
-  window.addEventListener('load', () => {
-    aos_init();
-  });
-
 });
