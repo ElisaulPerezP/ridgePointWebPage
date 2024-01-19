@@ -2,10 +2,10 @@
     @slot('slotHead')
         <section id="editResourceMessage" class="info">
             <div class="col-lg-6 text-center">
-                <h2 class="text-amber-50"
+                <div class="subtitle"
                     data-aos="fade-down">
-                    Edicion de imagenes del carousel principal
-                </h2>
+                    Index of images for the main carousel
+                </div>
             </div>
         </section>
     @endslot

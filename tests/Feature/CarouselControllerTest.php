@@ -32,10 +32,6 @@ class CarouselControllerTest extends TestCase
         $response->assertSee('Contact');
 
 
-
-        //crea un carousel con la fábrica ................... LISTO
-        //como administrador consultar la ruta............... LISTO
-        //se obtiene ok...................................... LISTO
         //se renderiza el layaut.............................. todo
         //se renderiza el componente de diseño................ todo
         //se renderizan el componente individual.............. todo

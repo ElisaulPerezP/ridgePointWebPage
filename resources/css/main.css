@@ -2852,3 +2852,14 @@ section {
 .footer .footer-legal .credits a {
   color: var(--color-primary);
 }
+/*--------------------------------------------------------------
+# carousel index - panel
+--------------------------------------------------------------*/
+
+.subtitle{
+  margin-top: 10%;
+  margin-bottom: -10%;
+  font-size: 300%;
+  font-family: var(--font-primary);
+  color: #ffffff;
+}
