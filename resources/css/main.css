@@ -19,10 +19,72 @@
 
 /* Colors */
 :root {
-  --color-default: #364d59;
-  --color-primary: #2ffe00;
-  --color-secondary: #52565e;
+  --color-default: #04B42C;
+  --color-primary: #6F1AEB;
+  --color-secondary: #416B4B;
+  /*Colors
+#04b42c
+#97dfa1
+#04bc2b
+#039524
+#24742f
+
+ analogos:
+ #04B42C
+ #21FCE9
+ #21FC9F
+ #3EFC21
+ #21C9FC
+
+ monocromaticos:
+ #04B42C
+ #509660
+ #21FC54
+ #49634F
+ #2C332E
+
+ triada primaria
+ #04B42C
+ #EB8E1A
+ #6F1AEB
+ #644296
+ #416B4B
+
+triada secundaria:
+#B56704
+#4C04B5
+#04B42C
+#226030
+#362A1C
+
+complementarios
+#04B42C
+#B8868A
+#F77782
+#84A28B
+#786264
+
+separacion complementaria
+#04B42C
+#BDF777
+#F777CF
+#786271
+#627867
+
+doble separacion complementaria
+#0DB593
+#AD16B5
+#04B42C
+#B54016
+#52B50D
+ */
 }
+
+
+/*************************************************
+correcciones al responsive de la aplicacion
+************************************************** */
+
 
 /* Smooth scroll behavior */
 :root {
@@ -44,7 +106,7 @@ a {
 }
 
 a:hover {
-  color: #ffc732;
+  color:  #EB8E1A;
   text-decoration: none;
 }
 
@@ -248,19 +310,57 @@ section {
 .header {
   z-index: 997;
   position: absolute;
-  padding: 30px 0;
-  top: 0;
-  left: 0;
-  right: 0;
+  padding: 0% 0% 0% 0%;
+  top: 0%;
+  left: 10%;
+  right: 10%;
 }
 
 .header .logo img {
-  max-height: 40px;
+  max-height: 250px;
   margin-right: 6px;
+}
+/* phone se*/
+@media screen and (max-width: 667px){
+  .header .logo img {
+    max-height: 100px;
+    margin-right: 6px;
+  }
+}
+@media screen and (max-height: 500px){
+  .header .logo img {
+    max-height: 100px;
+    margin-right: 6px;
+  }
+}
+
+/*iphone xr */
+
+@media screen and (max-width: 415px){
+  .header .logo img {
+    max-height: 150px;
+    margin-right: 6px;
+    margin-top: 100px;
+  }
+}
+@media screen and (max-height: 414px){
+  .header .logo img {
+    max-height: 120px;
+    margin-right: 6px;
+  }
+
+}
+/* Galaxy fold */
+@media (max-height: 280px)  {
+  .header .logo img {
+    max-height: 100px;
+    margin-right: 6px;
+  }
+
 }
 
 .header .logo h1 {
-  font-size: 24px;
+  font-size: 250%;
   font-weight: 700;
   color: #fff;
   margin-bottom: 0;
@@ -281,7 +381,7 @@ section {
 
   .navbar ul {
     margin: 0;
-    padding: 0;
+    padding: 0% 0% 0% 0%;
     display: flex;
     list-style: none;
     align-items: center;
@@ -293,7 +393,7 @@ section {
 
   .navbar>ul>li {
     white-space: nowrap;
-    padding: 10px 0 10px 28px;
+    padding: 0% 3% 0% 0%;
   }
 
   .navbar a,
@@ -494,13 +594,43 @@ section {
   .mobile-nav-show {
     position: absolute;
     color: #fff;
-    font-size: 28px;
+    font-size: 35px;
     cursor: pointer;
     line-height: 0;
     transition: 0.5s;
     z-index: 9999;
     padding-right: 10px;
   }
+/* iphone xr */
+  @media (max-height: 414px) {
+    .mobile-nav-show {
+      position: absolute;
+      color: #fff;
+      font-size: 35px;
+      cursor: pointer;
+      line-height: 0;
+      transition: 0.5s;
+      z-index: 9999;
+      padding-right: 10px;
+      margin-left: 20%;
+    }
+  }
+  /* Galaxy fold */
+  @media (max-height: 280px)  {
+    .mobile-nav-show {
+      position: absolute;
+      color: #fff;
+      font-size: 25px;
+      cursor: pointer;
+      line-height: 0;
+      transition: 0.5s;
+      z-index: 9999;
+      padding-right: 10px;
+      margin-left: 20%;
+    }
+  }
+
+
 
   .mobile-nav-hide {
     color: #fff;
@@ -1493,7 +1623,7 @@ section {
 }
 
 .project-details .portfolio-info .btn-visit:hover {
-  background: #ffc019;
+  background:  #EB8E1A;
 }
 
 .project-details .portfolio-description h2 {
@@ -1843,7 +1973,7 @@ section {
 .hero .carousel {
   width: 100%;
   min-height: 100vh;
-  padding: 80px 0;
+  padding: 0px 0;
   margin: 0;
   position: relative;
 }
@@ -1872,19 +2002,72 @@ section {
   z-index: 2;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 667px){
   .hero .info {
-    padding: 0 50px;
+    position: absolute;
+    inset: 0;
+    margin-top: 20%;
+    z-index: 2;
+  }
+}
+
+
+
+
+@media (max-width: 745px) {
+  .hero .info {
+    padding: 0;
   }
 }
 
 .hero .info h2 {
-  color: #fff;
-  margin-bottom: 30px;
-  padding-bottom: 30px;
+  color: #ffffff;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
   font-size: 56px;
   font-weight: 700;
   position: relative;
+}
+/*iphone xr */
+@media (max-height: 414px) {
+  .hero .info h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    margin-top: 10%;
+    padding-bottom: 15px;
+    font-size: 35px;
+    font-weight: 700;
+    position: relative;
+  }
+}
+/* iPhone SE */
+@media (max-height: 375px) and (max-width: 667px) {
+  .hero .info h2 {
+    color: #ffffff;
+    margin-top: -5%;
+    font-size: 35px;
+    font-weight: 700;
+  }
+}
+
+/* Galaxy S8 */
+@media (max-height: 360px) and (max-width: 740px) {
+  .hero .info h2 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    margin-top: 20%;
+    font-size: 35px;
+    font-weight: 700;
+  }
+}
+/* Galaxy fold */
+@media (max-height: 280px)  {
+  .hero .info h2 {
+    color: #ffffff;
+    margin-top: -5%;
+    font-size: 25px !important;
+    font-weight: 700;
+  }
 }
 
 .hero .info h2:after {
@@ -1907,8 +2090,11 @@ section {
 }
 
 .hero .info p {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgb(255, 255, 255);
   font-size: 18px;
+  margin-top: 0;
+  margin-button: 0;
+  margin: auto;
 }
 
 .hero .info .btn-get-started {

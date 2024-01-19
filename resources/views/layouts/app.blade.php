@@ -30,13 +30,49 @@
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
-    <div>
-        @include('layouts.navigation')
-        {{ $welcomeCarousel }}
+    <div class="bg-black">
+
+        <div>
+            @if(isset($welcomeCarousel))
+                <div>
+
+                    @include('layouts.navigation')
+
+                </div>
+                <div>
+                    {{$welcomeCarousel}}
+                </div>
+            @else
+                @if(isset($slotHead))
+                    <div class="container">
+                        @include('layouts.navigation')
+                        <section id="title" class="">
+                            {{$slotHead}}
+                        </section>
+                    </div>
+                @else
+                    <div class="default-carousel">
+                        <p>El contenido de cavecera no esta disponible.</p>
+                    </div>
+                @endif
+            @endif
+        </div>
     </div>
-    <main>
-        {{ $contactForm }}
-    </main>
+    <div>
+        <main>
+            @if(isset($contactForm))
+                {{$contactForm}}
+            @else
+                @if(isset($slotMain))
+                    {{$slotMain}}
+                @else
+                    <div class="default-carousel">
+                        <p>El contenido principal no esta disponible.</p>
+                    </div>
+                @endif
+            @endif
+        </main>
+    </div>
 </div>
 </body>
 </html>

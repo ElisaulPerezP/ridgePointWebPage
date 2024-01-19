@@ -1,11 +1,12 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
-    <header id="header" class="header d-flex align-items-center">
+    <div id="header" class="header d-flex align-items-center">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
             <div>
                 <a href="index.html" class="logo d-flex align-items-center">
                     <!-- Uncomment the line below if you also wish to use an image logo -->
-                    <!-- <img src="assets/img/logo.png" alt=""> -->
-                    <h1>Ridge-Point Construction<span>.</span></h1>
+                    <!--h1 class=" mt-4" >Ridge-Point</h1-->
+                    <img  data-aos="fade-right" src={{asset('storage/icons/welcomeIcon.svg')}} alt="no-logo">
+
                 </a>
             </div>
             <div>
@@ -44,5 +45,5 @@
                 </nav><!-- .navbar -->
             </div>
         </div>
-    </header><!-- End Header -->
+    </div><!-- End Header -->
 </nav>
