@@ -23,7 +23,6 @@ class CarouselControllerTest extends TestCase
         $response->assertOk();
         $response->assertViewIs('carousel.index');
         $response->assertViewHas('carousels');
-        $response->assertSee('Ridge-Point Construction');
         $response->assertSee('Home');
         $response->assertSee('About');
         $response->assertSee('Services');

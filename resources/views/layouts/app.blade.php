@@ -24,26 +24,55 @@
             'resources/js/app.js',
             'resources/vendor/bootstrap/css/bootstrap.min.css',
             'resources/vendor/bootstrap-icons/bootstrap-icons.css',
-            'resources/vendor/fontawesome-free/css/all.min.css',
             'resources/vendor/aos/aos.css',
-            'resources/vendor/glightbox/css/glightbox.min.css',
-            'resources/vendor/swiper/swiper-bundle.min.css',
-            'resources/vendor/bootstrap/js/bootstrap.bundle.min.js',
             'resources/vendor/aos/aos.js',
-            'resources/vendor/glightbox/js/glightbox.min.js',
-            'resources/vendor/isotope-layout/isotope.pkgd.min.js',
-            'resources/vendor/swiper/swiper-bundle.min.js',
-            'resources/vendor/purecounter/purecounter_vanilla.js',
-            'resources/vendor/php-email-form/validate.js',
             'resources/js/main.js',])
 </head>
 <body class="font-sans antialiased">
 <div class="min-h-screen bg-gray-100">
-    @include('layouts.navigation')
-    <main>
-        {{ $slot }}
-    </main>
-</div>
+    <div class="bg-black">
 
+        <div>
+            @if(isset($welcomeCarousel))
+                <div>
+
+                    @include('layouts.navigation')
+
+                </div>
+                <div>
+                    {{$welcomeCarousel}}
+                </div>
+            @else
+                @if(isset($slotHead))
+                    <div class="container">
+                        @include('layouts.navigation')
+                        <section id="title" class="">
+                            {{$slotHead}}
+                        </section>
+                    </div>
+                @else
+                    <div class="default-carousel">
+                        <p>El contenido de cavecera no esta disponible.</p>
+                    </div>
+                @endif
+            @endif
+        </div>
+    </div>
+    <div>
+        <main>
+            @if(isset($contactForm))
+                {{$contactForm}}
+            @else
+                @if(isset($slotMain))
+                    {{$slotMain}}
+                @else
+                    <div class="default-carousel">
+                        <p>El contenido principal no esta disponible.</p>
+                    </div>
+                @endif
+            @endif
+        </main>
+    </div>
+</div>
 </body>
 </html>
