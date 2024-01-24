@@ -11,7 +11,7 @@ class StoreCarouselRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -22,7 +22,13 @@ class StoreCarouselRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'message' => 'required|string',
+            'creation_date' => 'required|date',
+            'creation_place' => 'required|string',
+            'image_rights' => 'required|string',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Reglas para la carga de imágenes
         ];
     }
 }
