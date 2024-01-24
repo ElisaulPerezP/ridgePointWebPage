@@ -215,3 +215,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+document.addEventListener('DOMContentLoaded', function () {
+  const logoutLink = document.getElementById('logoutLink');
+  const logoutForm = document.getElementById('logout-form');
+  const profileDropdown = document.getElementById('profileDropdown');
+  const profileDropdownMenu = document.getElementById('profileDropdownMenu');
+
+  if (logoutLink) {
+    logoutLink.addEventListener('click', function (event) {
+      event.preventDefault();
+      logoutForm.submit();
+    });
+  }
+
+  if (profileDropdown) {
+    profileDropdown.addEventListener('click', function () {
+      if (profileDropdownMenu) {
+        profileDropdownMenu.style.display = (profileDropdownMenu.style.display === 'block') ? 'none' : 'block';
+      }
+    });
+  }
+});

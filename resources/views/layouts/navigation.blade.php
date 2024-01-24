@@ -41,6 +41,26 @@
                             </ul>
                         </li>
                         <li><a href="contact.html">Contact</a></li>
+                        @guest
+                            <li><a href={{route('login')}}>Login</a></li>
+                        @else
+                            <li class="dropdown">
+                                <a href="#" id="profileDropdown">
+                                    <span>Profile</span>
+                                    <i class="bi bi-chevron-down dropdown-indicator"></i>
+                                </a>
+                                <ul id="profileDropdownMenu">
+                                    <li><a href="{{ route('profile.edit') }}">Edit Profile</a></li>
+                                    <li>
+                                        <a href="#" id="logoutLink">Logout</a>
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            @csrf
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        @endguest
                     </ul>
                 </nav><!-- .navbar -->
             </div>
