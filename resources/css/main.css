@@ -123,7 +123,8 @@ h6 {
 # Sections & Section Header
 --------------------------------------------------------------*/
 section {
-  padding: 80px 0;
+  padding: 7% 0 5% 0;
+  margin:0% 0 0% 0;
   overflow: hidden;
 }
 
@@ -338,9 +339,11 @@ section {
 
 @media screen and (max-width: 415px){
   .header .logo img {
-    max-height: 150px;
+    max-height: 200px;
     margin-right: 6px;
     margin-top: 100px;
+    padding: 15% 0 2% 0;
+    margin:0% 0 -5% 0;
   }
 }
 @media screen and (max-height: 414px){
@@ -700,7 +703,7 @@ section {
 
 @media (max-width: 575px) {
   .get-started .php-email-form {
-    padding: 20px;
+    padding: 5% 5% 5% 5%;
   }
 }
 
@@ -2022,7 +2025,8 @@ section {
 
 .hero .info h2 {
   color: #ffffff;
-  margin-bottom: 15px;
+  margin-top: 20%;
+  margin-bottom: 3%;
   padding-bottom: 15px;
   font-size: 56px;
   font-weight: 700;
@@ -2859,7 +2863,82 @@ section {
 .subtitle{
   margin-top: 10%;
   margin-bottom: -10%;
-  font-size: 300%;
+  font-size: 150%;
   font-family: var(--font-primary);
   color: #ffffff;
+}
+
+/* phone se*/
+@media screen and (max-width: 667px){
+  .subtitle{
+    margin-top: 20%;
+    margin-bottom: -10%;
+    font-size: 150%;
+    font-family: var(--font-primary);
+    color: #ffffff;
+  }
+  section {
+    padding: 20% 0 5% 0;
+    overflow: hidden;
+  }
+}
+@media screen and (max-height: 500px){
+  .subtitle{
+    margin-top: 10%;
+    margin-bottom: -10%;
+    font-size: 150%;
+    font-family: var(--font-primary);
+    color: #ffffff;
+  }
+  section {
+    padding: 15% 0 10% 0;
+    margin:0% 0 -20% 0;
+    overflow: hidden;
+  }
+}
+
+/*iphone xr */
+
+@media screen and (max-width: 415px){
+  .subtitle{
+    margin-top: 15%;
+    margin-bottom: -20%;
+    font-size: 150%;
+    font-family: var(--font-primary);
+    color: #ffffff;
+  }
+  section {
+    padding: 15% 0 20% 0;
+    margin:0% 0 -10% 0;
+    overflow: hidden;
+
+  }
+}
+@media screen and (max-height: 414px){
+  .subtitle{
+    margin-top: -10%;
+    margin-bottom: 10%;
+    font-size: 150%;
+    font-family: var(--font-primary);
+    color: #ffffff;
+  }
+  section {
+    padding: 15% 0 0% 0;
+    margin: 0% 0 0% 0;
+    overflow: hidden;
+  }
+}
+/* Galaxy fold */
+@media (max-height: 280px)  {
+  .subtitle{
+    margin-top: 10%;
+    margin-bottom: -10%;
+    font-size: 150%;
+    font-family: var(--font-primary);
+    color: #ffffff;
+  }
+  section {
+    padding: 15% 0 20% 0;
+    margin:0% 0 -50% 0;
+  }
 }
