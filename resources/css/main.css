@@ -703,7 +703,7 @@ section {
 
 @media (max-width: 575px) {
   .get-started .php-email-form {
-    padding: 0% 5% 0% 5%;
+    padding: 5% 5% 5% 5%;
   }
 }
 

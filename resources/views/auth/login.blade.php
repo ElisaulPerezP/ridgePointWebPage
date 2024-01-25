@@ -2,7 +2,7 @@
     @slot('slotHead')
         <section id="loginMessage" class="info">
             <div class="col-lg-6 text-center">
-                <div class="subtitle" data-aos="fade-down">
+                <div class="subtitle" data-aos="fade-left">
                     Sign in to our application
                 </div>
             </div>
@@ -11,7 +11,7 @@
     @endslot
     @slot('slotMain')
         <section id="editForm" class="get-started section-bg">
-            <div class="py-12">
+            <div class="py-12 container" data-aos="fade-up">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                     <!-- Session Status -->
                     <x-auth-session-status class="mb-4" :status="session('status')"/>
