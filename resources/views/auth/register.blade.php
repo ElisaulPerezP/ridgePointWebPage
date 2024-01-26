@@ -1,5 +1,19 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+<x-app-layout>
+@slot('slotHead')
+        <section id="RegistrationMessage" class="info">
+            <div class="col-lg-6 text-center">
+                <div class="subtitle" data-aos="fade-left">
+                    Sign in to our application
+                </div>
+            </div>
+
+        </section>
+    @endslot
+    @slot('slotMain')
+        <section id="registrationForm" class="get-started section-bg">
+        <div class="container" data-aos="fade-up">
+                <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+        <form method="POST" action="{{ route('register') }}"  class="php-email-form">
         @csrf
 
         <!-- Name -->
@@ -49,4 +63,11 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+    <div class="flex items-center justify-center mt-4">
+                            <a href="{{ route('google.login') }}">
+                                <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" alt="Log in with Google" class="ml-2" data-aos="fade-left">
+                            </a>
+                        </div>
+@endslot
+</x-app-layout>>
+  

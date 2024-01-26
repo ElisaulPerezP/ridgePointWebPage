@@ -67,7 +67,17 @@
                             </x-primary-button>
                         </div>
                     </form>
-                </div>
+                    <div class="php-email-form">
+                    <a  href="{{ route('register') }}">
+                        <x-secondary-button class="ms-3">
+                        Don't you have an account?
+                                {{ __('Singup') }}
+                            </x-secondary-button>
+                            </a>
+                        </div>
+                
+                        </div>
+
             </div>
         </section>
     @endslot

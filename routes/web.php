@@ -57,5 +57,6 @@ Route::get('/google-callback', function () {
     return redirect( route('dashboard'));
 });
 
+Route::resource('quotes', CarouselController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';
