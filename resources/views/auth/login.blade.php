@@ -11,14 +11,18 @@
     @endslot
     @slot('slotMain')
         <section id="editForm" class="get-started section-bg">
-            <div class="py-12 container" data-aos="fade-up">
+            <div class="container" data-aos="fade-up">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                     <!-- Session Status -->
                     <x-auth-session-status class="mb-4" :status="session('status')"/>
 
                     <form method="POST" action="{{ route('login') }}" class="php-email-form">
                         @csrf
-
+                        <div class="flex items-center justify-center mt-4">
+                            <a href="{{ route('google.login') }}">
+                                <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" alt="Log in with Google" class="ml-2" data-aos="fade-left">
+                            </a>
+                        </div>
                         <!-- Email Address -->
                         <div class="php-email-form">
                             <x-input-label for="email" :value="__('Email')"/>

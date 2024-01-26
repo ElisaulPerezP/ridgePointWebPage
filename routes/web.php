@@ -2,8 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarouselController;
+use Laravel\Socialite\Facades\Socialite;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,5 +33,29 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('carousels', CarouselController::class);
+
+Route::get('/login-google', function () {
+    return Socialite::driver('google')->redirect();
+})->name('google.login');
+
+Route::get('/google-callback', function () {
+    $user = Socialite::driver('google')->user();
+
+    $userExits = User::where('external_id', $user->id)->where('external_auth', 'google')->first();
+    if($userExits){
+        Auth::login($userExits);
+    } else{
+        $userNew = User::create([
+            'name'=> $user->name,
+            'email'=> $user->email,
+            'avatar'=> $user->avatar,
+            'external_id'=> $user->id,
+            'external_auth'=> 'google',
+        ]);
+        Auth::login($userNew);
+    }
+    return redirect( route('dashboard'));
+});
+
 
 require __DIR__.'/auth.php';
