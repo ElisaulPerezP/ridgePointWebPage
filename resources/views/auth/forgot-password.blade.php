@@ -10,7 +10,7 @@
     @endslot
     @slot('slotMain')
         <section id="forgot" class="get-started section-bg">
-            <div class="py-12 container" data-aos="fade-up">
+            <div class="container" data-aos="fade-up">
                 <h2 class="mb-4 text-sm text-gray-600">
                     {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
                 </h2>
