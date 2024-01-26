@@ -47,16 +47,16 @@
 
                     <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
                         <div class="content">
-                            <h3>Minus hic non reiciendis ea possimus at quia.</h3>
-                            <p>Rem id rerum. Debitis deserunt quidem delectus expedita ducimus dolor. Aut iusto ipsa. Eos ipsum nobis ipsa soluta itaque perspiciatis fuga ipsum perspiciatis. Eum amet fugiat totam nisi possimus ut delectus dicta.
-                            <p>Aliquam velit deserunt autem. Inventore et saepe. Tenetur suscipit eligendi labore culpa eos. Deserunt porro magni qui necessitatibus dolorem at animi cupiditate.</p>
+                            <h3>Allow us to help you get an approximate idea of the price for your project.</h3>
+                            <p>This application will allow you to obtain a quote in record time. To do so, you must follow the steps. Start by filling out the form displayed below.</p>
                         </div>
                     </div>
 
                     <div class="col-lg-5" data-aos="fade">
-                        <form action="forms/quote.php" method="post" class="php-email-form">
+                        <form action="{{ route('quotes.store') }}" class="php-email-form" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <h3>Get a quote</h3>
-                            <p>Vel nobis odio laboriosam et hic voluptatem. Inventore vitae totam. Rerum repellendus enim linead sero park flows.</p>
+                            <p>Please fill out the following form, and we will contact you shortly.</p>
                             <div class="row gy-3">
 
                                 <div class="col-md-12">
