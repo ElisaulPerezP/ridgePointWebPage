@@ -2,7 +2,7 @@
     <div id="header" class="header d-flex align-items-center">
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
             <div>
-                <a href="index.html" class="logo d-flex align-items-center">
+                <a href="{{ route('welcome') }}" class="logo d-flex align-items-center">
                     <!-- Uncomment the line below if you also wish to use an image logo -->
                     <!--h1 class=" mt-4" >Ridge-Point</h1-->
                     <img  data-aos="fade-right" src={{asset('storage/icons/welcomeIcon.svg')}} alt="no-logo">
@@ -21,7 +21,7 @@
                         <li><a href="{{ route('welcome') }}">Services</a></li>
                         <li><a href="{{ route('welcome') }}">Projects</a></li>
                         <li><a href="{{ route('welcome') }}">Blog</a></li>
-                        <li class="dropdown"><a href="{{ route('Management') }}"><span>Management Panel</span> <i
+                        <li class="dropdown"><a href="{{ route('management') }}"><span>Management Panel</span> <i
                                         class="bi bi-chevron-down dropdown-indicator"></i></a>
                             <ul>
                                 <li><a href="{{ route('welcome') }}">Dropdown 1</a></li>

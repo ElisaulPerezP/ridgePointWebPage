@@ -4,7 +4,20 @@
             <div class="col-lg-6 text-center">
                 <div class="subtitle"
                     data-aos="fade-down">
-                    Index of images for the main carousel
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Carousels</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('quotes.index') }}">quotes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li>
+                        </ul>
                 </div>
             </div>
         </section>
@@ -13,16 +26,6 @@
         <section id="editResourceIndex">
             <div>
                 <table>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Message</th>
-                        <th>Creation Date</th>
-                        <th>Creation Place</th>
-                        <th>Image Rights</th>
-                    </tr>
-                    </thead>
                     <tbody>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         @foreach ($carousels as $carousel)

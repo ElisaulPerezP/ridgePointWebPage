@@ -4,7 +4,20 @@
             <div class="col-lg-6 text-center">
                 <div class="subtitle"
                     data-aos="fade-down">
-                    Index of images for the main quote
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('carousels.index') }}">Carousels</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="{{ route('quotes.index') }}">quotes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        </li>
+                        </ul>
                 </div>
             </div>
         </section>
