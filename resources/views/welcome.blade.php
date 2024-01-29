@@ -58,22 +58,32 @@
                             <h3>Get a quote</h3>
                             <p>Please fill out the following form, and we will contact you shortly.</p>
                             <div class="row gy-3">
+                            <div class="col-md-12">
+                            <input type="text" name="name" class="form-control" placeholder="Name"  value="{{ old('name') }}">
+                        </div>
 
-                                <div class="col-md-12">
-                                    <input type="text" name="name" class="form-control" placeholder="Name" required>
-                                </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" name="description" placeholder="Description">
+                        </div>
 
-                                <div class="col-md-12 ">
-                                    <input type="email" class="form-control" name="email" placeholder="Email" required>
-                                </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" name="message" placeholder="Message">
+                        </div>
 
-                                <div class="col-md-12">
-                                    <input type="text" class="form-control" name="phone" placeholder="Phone" required>
-                                </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" name="creation_date" placeholder="Creation Date">
+                        </div>
 
-                                <div class="col-md-12">
-                                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
-                                </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" name="creation_place" placeholder="Creation Place">
+                        </div>
+
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" name="image_rights" placeholder="Image Rights">
+                        </div>
+
+                        <label for="image">Image:</label>
+                        <input type="file" class="form-control" name="image" accept="image/*">
 
                                 <div class="col-md-12 text-center">
                                     <div class="loading">Loading</div>

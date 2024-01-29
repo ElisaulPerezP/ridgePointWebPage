@@ -94,7 +94,7 @@ class QuoteControllerTest extends TestCase
 
         $this->assertDatabaseCount('quotes', 1);
         $quote = quote::first();
-        $this->assertNotNull($quote->getFirstMedia('Quote_images'));
+        $this->assertNotNull($quote->getFirstMedia('quote_images'));
     }
 
     public function testItCanShowQuote():void
