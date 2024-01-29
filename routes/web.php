@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarouselController;
+use App\Http\Controllers\QuoteController;
 use Laravel\Socialite\Facades\Socialite;
 
 /*
@@ -57,6 +58,6 @@ Route::get('/google-callback', function () {
     return redirect( route('dashboard'));
 });
 
-Route::resource('quotes', CarouselController::class)->middleware('auth');
+Route::resource('quotes', QuoteController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';
