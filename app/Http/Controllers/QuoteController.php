@@ -27,7 +27,7 @@ class QuoteController extends Controller
 
     public function store(StoreQuoteRequest $request)
     {
-        $imagePath = $request->file('image')->store('Quote_images', 'public');
+        $imagePath = $request->file('image')->store('cuote_images', 'public');
 
         $Quote = new Quote();
         $Quote->name = $request->input('name');
@@ -37,11 +37,11 @@ class QuoteController extends Controller
         $Quote->creation_place = $request->input('creation_place');
         $Quote->image_rights = $request->input('image_rights');
 
-        $Quote->addMedia(storage_path("app/public/{$imagePath}"))->preservingOriginal()->toMediaCollection('Quote_images');
+        $Quote->addMedia(storage_path("app/public/{$imagePath}"))->preservingOriginal()->toMediaCollection('quote_images');
 
         $Quote->save();
 
-        return redirect()->route('quotes.index')->with('success', 'Quote created successfully');
+        return redirect()->intended(route('quotes.index'));
     }
 
 
