@@ -10,6 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use App\Models\PendingMatter;
 
 class User extends Authenticatable implements HasMedia
 {
@@ -52,4 +53,13 @@ class User extends Authenticatable implements HasMedia
     {
         $this->addMediaCollection('avatar_images')->singleFile();
     }
+    public function clientPendingMatters()
+{
+    return $this->hasMany(PendingMatter::class, 'client_id');
+}
+
+public function responsiblePendingMatters()
+{
+    return $this->hasMany(PendingMatter::class, 'responsible_id');
+}
 }
