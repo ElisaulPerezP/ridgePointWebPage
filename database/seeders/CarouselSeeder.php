@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Carousel;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
+use Faker\Generator as Faker;
 
 class CarouselSeeder extends Seeder
 {
@@ -13,6 +14,7 @@ class CarouselSeeder extends Seeder
      */
     public function run(): void
     {
+        $faker = new Faker();
         $carousel = Carousel::factory()->create();
         $carousel2 = Carousel::factory()->create();
         $carousel3 = Carousel::factory()->create();
