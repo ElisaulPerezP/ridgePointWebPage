@@ -25,6 +25,18 @@
     @slot('slotMain')
         <section id="editResourceIndex">
             <div>
+            <div class="container">
+        <div class="row">
+            <div class="col-lg-6 text-center">
+                <div class="info">
+                    <h1>Carousels Pothos Index</h1>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center">
+                <a href="{{ route('carousels.create') }}" class="btn btn-primary">Create New Carousel</a>
+            </div>
+        </div>
+    </div>
                 <table>
                     <tbody>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

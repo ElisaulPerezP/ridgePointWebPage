@@ -21,7 +21,7 @@
                         <li><a href="{{ route('welcome') }}">Services</a></li>
                         <li><a href="{{ route('welcome') }}">Projects</a></li>
                         <li><a href="{{ route('welcome') }}">Blog</a></li>
-                        <li class="dropdown"><a href="{{ route('management') }}"><span>Management Panel</span> <i
+                        <li class="dropdown"><a href="{{ route('pendingMatters.index') }}"><span>Management Panel</span> <i
                                         class="bi bi-chevron-down dropdown-indicator"></i></a>
                             <ul>
                                 <li><a href="{{ route('welcome') }}">Dropdown 1</a></li>

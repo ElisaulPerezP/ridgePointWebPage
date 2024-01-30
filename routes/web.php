@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PendingMatterController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
 use App\Models\User;
@@ -60,8 +61,7 @@ Route::get('/google-callback', function () {
 
 Route::resource('quotes', QuoteController::class)->middleware('auth');
 
-Route::get('/management', function () {
-    return view('management');
-})->middleware(['auth', 'verified'])->name('management');
+
+Route::resource('pendingMatters', PendingMatterController::class)->middleware('auth');
 
 require __DIR__.'/auth.php';

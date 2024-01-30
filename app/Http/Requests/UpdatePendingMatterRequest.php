@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCarouselRequest extends FormRequest
+class UpdatePendingMatterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,8 @@ class UpdateCarouselRequest extends FormRequest
             'message' => 'sometimes|required|string',
             'creation_date' => 'sometimes|required|date',
             'creation_place' => 'sometimes|required|string',
-            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'client_id' => 'sometimes|required|exists:users,id',
+            'responsible_id' => 'sometimes|required|exists:users,id',
         ];
     }
 }

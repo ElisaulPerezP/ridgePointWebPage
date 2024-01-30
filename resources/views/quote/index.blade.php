@@ -26,16 +26,6 @@
         <section id="editResourceIndex">
             <div>
                 <table>
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Description</th>
-                        <th>Message</th>
-                        <th>Creation Date</th>
-                        <th>Creation Place</th>
-                        <th>Image Rights</th>
-                    </tr>
-                    </thead>
                     <tbody>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         @foreach ($quotes as $quote)

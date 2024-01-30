@@ -69,11 +69,6 @@
                                 <p>New Image Preview:</p>
                                 <img src="{{ URL::asset('path-to-your-temporary-image') }}" alt="New Carousel Image">
                                 <p>New Caption: {{ request()->input('new_caption') }}</p>
-                            </div>
-                        @else
-                            <div class="col-md-12 mt-4">
-                                <p>No New Image Selected</p>
-                            </div>
                         @endif
 
                         <div class="col-md-12 text-center mt-4">

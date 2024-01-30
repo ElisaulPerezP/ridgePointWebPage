@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCarouselRequest extends FormRequest
+class StorePendingMatterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,12 +22,13 @@ class UpdateCarouselRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'sometimes|required|string|max:255',
-            'description' => 'sometimes|required|string',
-            'message' => 'sometimes|required|string',
-            'creation_date' => 'sometimes|required|date',
-            'creation_place' => 'sometimes|required|string',
-            'image' => 'sometimes|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'message' => 'required|string',
+            'creation_date' => 'required|date',
+            'creation_place' => 'required|string',
+            'client_id' => 'required|exists:users,id',
+            'responsible_id' => 'required|exists:users,id', 
         ];
     }
 }
