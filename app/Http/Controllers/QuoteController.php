@@ -27,7 +27,7 @@ class QuoteController extends Controller
 
     public function store(StoreQuoteRequest $request)
     {
-        $imagePath = $request->file('image')->store('cuote_images', 'public');
+        $imagePath = $request->file('image')->store('quote_images', 'public');
 
         $Quote = new Quote();
         $Quote->name = $request->input('name');
@@ -59,11 +59,17 @@ class QuoteController extends Controller
     public function update(UpdateQuoteRequest $request, Quote $Quote)
     {
         if ($request->hasFile('image')) {
-            $newImagePath = $request->file('image')->store('Quote_images', 'public');
-
-            $Quote->clearMediaCollection('Quote_images');
-
-            $Quote->addMedia(storage_path("app/public/{$newImagePath}"))->preservingOriginal()->toMediaCollection('Quote_images');
+            $existingMedia = $Quote->getFirstMedia('quote_images');
+        
+            if ($existingMedia) {
+                $existingMedia->delete();
+            }
+        
+            $newImagePath = $request->file('image')->store('quote_images', 'public');
+        
+            $Quote->clearMediaCollection('quote_images');
+        
+            $Quote->addMedia(storage_path("app/public/{$newImagePath}"))->preservingOriginal()->toMediaCollection('quote_images');
         }
 
         $Quote->name = $request->input('name');
@@ -81,8 +87,8 @@ class QuoteController extends Controller
 
     public function destroy(Quote $Quote)
     {
-        if ($Quote->hasMedia('Quote_images')) {
-            $Quote->getMedia('Quote_images')->each(function ($media) {
+        if ($Quote->hasMedia('quote_images')) {
+            $Quote->getMedia('quote_images')->each(function ($media) {
                 Storage::delete($media->getPath());
             });
         }

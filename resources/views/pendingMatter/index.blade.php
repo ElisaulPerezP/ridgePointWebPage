@@ -1,25 +1,6 @@
 <x-app-layout>
     @slot('slotHead')
         <section id="editResourceMessage" class="info">
-            <div class="col-lg-6 text-center">
-                <div class="subtitle"
-                    data-aos="fade-down">
-                    <ul class="nav nav-tabs">
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="{{ route('carousels.index') }}">Carousels</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('quotes.index') }}">quotes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                        </li>
-                        </ul>
-                </div>
-            </div>
         </section>
     @endslot
     @slot('slotMain')
@@ -39,6 +20,17 @@
         </div>
     </div>
 </section>
+@if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
         <table class="min-w-full">
             <thead>
                 <tr>

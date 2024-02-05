@@ -21,28 +21,40 @@
                         <li><a href="{{ route('welcome') }}">Services</a></li>
                         <li><a href="{{ route('welcome') }}">Projects</a></li>
                         <li><a href="{{ route('welcome') }}">Blog</a></li>
+                        <li><a href="{{ route('quotes.create') }}">Contact</a></li>
+                        @role('admin')
                         <li class="dropdown"><a href="{{ route('pendingMatters.index') }}"><span>Management Panel</span> <i
                                         class="bi bi-chevron-down dropdown-indicator"></i></a>
                             <ul>
-                                <li><a href="{{ route('welcome') }}">Dropdown 1</a></li>
-                                <li class="dropdown"><a href="{{ route('welcome') }}"><span>Deep Dropdown</span> <i
+                                <li><a href="{{ route('pendingMatters.index') }}">Pending Matters</a></li>
+                                <li><a href="{{ route('quotes.index') }}">Quotes</a></li>
+                                <li><a href="{{ route('quotes.index') }}">Messages</a></li>
+                                <li class="dropdown"><a href="{{ route('users.index') }}"><span>Users</span> <i
                                                 class="bi bi-chevron-down dropdown-indicator"></i></a>
                                     <ul>
-                                        <li><a href="{{ route('welcome') }}">Deep Dropdown 1</a></li>
-                                        <li><a href="{{ route('welcome') }}">Deep Dropdown 2</a></li>
-                                        <li><a href="{{ route('welcome') }}">Deep Dropdown 3</a></li>
-                                        <li><a href="{{ route('welcome') }}">Deep Dropdown 4</a></li>
-                                        <li><a href="{{ route('welcome') }}">Deep Dropdown 5</a></li>
+                                        <li><a href="{{ route('users.index') }}">Users</a></li>
+                                        <li><a href="{{ route('roles.index') }}">Roles</a></li>
+
                                     </ul>
                                 </li>
-                                <li><a href="{{ route('welcome') }}">Dropdown 2</a></li>
-                                <li><a href="{{ route('welcome') }}">Dropdown 3</a></li>
-                                <li><a href="{{ route('welcome') }}">Dropdown 4</a></li>
+                                <li class="dropdown"><a href="{{ route('carousels.index') }}"><span>Front</span> <i
+                                                class="bi bi-chevron-down dropdown-indicator"></i></a>
+                                    <ul>
+                                        <li><a href="{{ route('carousels.index') }}">Carousels</a></li>
+                                        <li><a href="{{ route('welcome') }}">About</a></li>
+                                        <li><a href="{{ route('welcome') }}">Services</a></li>
+                                        <li><a href="{{ route('welcome') }}">Projects</a></li>
+                                        <li><a href="{{ route('welcome') }}">Blog</a></li>
+                                        <li><a href="{{ route('welcome') }}">Reviews</a></li>
+
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
-                        <li><a href="{{ route('quotes.create') }}">Contact</a></li>
+                        @endrole
+
                         @guest
-                            <li><a href={{route('login')}}>Login</a></li>
+                            <li><a href={{ route('login') }}>Login</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" id="profileDropdown">

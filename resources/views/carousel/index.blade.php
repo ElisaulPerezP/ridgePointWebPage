@@ -2,20 +2,26 @@
     @slot('slotHead')
         <section id="editResourceMessage" class="info">
             <div class="col-lg-6 text-center">
-                <div class="subtitle"
+                <div class=""
                     data-aos="fade-down">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="#">Carousels</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('quotes.index') }}">quotes</a>
+                            <a class="nav-link" href="{{ route('quotes.index') }}">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
+                            <a class="nav-link" href="{{ route('quotes.index') }}">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                            <a class="nav-link" href="{{ route('quotes.index') }}">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('quotes.index') }}">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('quotes.index') }}">Reviews</a>
                         </li>
                         </ul>
                 </div>
@@ -37,6 +43,17 @@
             </div>
         </div>
     </div>
+    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <table>
                     <tbody>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

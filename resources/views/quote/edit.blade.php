@@ -87,7 +87,7 @@
                         </div>
                     </div>
                 </form>
-            </div><!-- End Quote Form -->
+            </div>
         </section>
     </x-slot>
 </x-app-layout>
@@ -99,7 +99,6 @@
     }
 </script>
 
-<!-- Agrega el siguiente formulario oculto para enviar la solicitud de eliminación -->
 <form id="delete-form" action="{{ route('quotes.destroy', $quote->id) }}" method="POST" style="display: none;">
     @csrf
     @method('DELETE')
