@@ -20,7 +20,7 @@ class PendingMatterControllerTest extends TestCase
         $admin = User::factory()->create();
         $permission = Permission::findOrCreate('index.pendingMatter');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $admin->assignRole($role);
 
         $response = $this->actingAs($admin)->get(route('pendingMatters.index'));
 
@@ -40,7 +40,7 @@ class PendingMatterControllerTest extends TestCase
         $admin = User::factory()->create();
         $permission = Permission::findOrCreate('create.pendingMatter');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $admin->assignRole($role);
 
         $this->actingAs($admin);
 
@@ -62,7 +62,7 @@ class PendingMatterControllerTest extends TestCase
         $admin = User::factory()->create();
         $permission = Permission::findOrCreate('store.pendingMatter');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $admin->assignRole($role);
 
         $response = $this->actingAs($admin)->post(route('pendingMatters.store'), [
             'name' => 'Example Pending Matter',
@@ -88,7 +88,7 @@ class PendingMatterControllerTest extends TestCase
         $admin = User::factory()->create();
         $permission = Permission::findOrCreate('show.pendingMatter');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $admin->assignRole($role);
 
         $response = $this->actingAs($admin)->get(route('pendingMatters.show', ['pendingMatter' => $pendingMatter->id]));
         $response->assertOk();
@@ -110,7 +110,7 @@ class PendingMatterControllerTest extends TestCase
         $admin = User::factory()->create();
         $permission = Permission::findOrCreate('edit.pendingMatter');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $admin->assignRole($role);
 
         $response = $this->actingAs($admin)->get(route('pendingMatters.edit', ['pendingMatter' => $pendingMatter->id]));
         $response->assertOk();
@@ -133,7 +133,7 @@ class PendingMatterControllerTest extends TestCase
         $admin = User::factory()->create();
         $permission = Permission::findOrCreate('update.pendingMatter');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $admin->assignRole($role);
 
         $response = $this->actingAs($admin)->put(route('pendingMatters.update', $pendingMatter->id), [
             'name' => 'Edited Pending Matter Name',
@@ -161,7 +161,7 @@ class PendingMatterControllerTest extends TestCase
         $admin = User::factory()->create();
         $permission = Permission::findOrCreate('destroy.pendingMatter');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $admin->assignRole($role);
         $this->assertDatabaseCount('pending_matters', 1);
 
         $response = $this->actingAs($admin)->delete(route('pendingMatters.destroy', ['pendingMatter' => $pendingMatter->id]));

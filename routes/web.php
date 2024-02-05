@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\QuoteController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RolesController;
 use Laravel\Socialite\Facades\Socialite;
 
 /*
@@ -62,6 +64,12 @@ Route::get('/google-callback', function () {
 Route::resource('quotes', QuoteController::class)->middleware('auth');
 
 
-Route::resource('pendingMatters', PendingMatterController::class)->middleware('auth');
+Route::resource('pendingMatters', PendingMatterController::class)->middleware(['auth', 'verified', 'role:admin']);
+
+
+Route::resource('users', UserController::class)->middleware(['auth', 'role:admin']);
+Route::resource('roles', RolesController::class)->middleware(['auth', 'role:admin']);
+
+
 
 require __DIR__.'/auth.php';

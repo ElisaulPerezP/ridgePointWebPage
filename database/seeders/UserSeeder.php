@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Carousel;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -17,9 +16,9 @@ class UserSeeder extends Seeder
             'email' => 'admin@ridgepoint.us',
         ]);
         $this->attachImageToUser($admin, 'muestra.jpg');
-        $roleWebAdmin = Role::findOrCreate('admin', 'web');
+        $roleAdmin = Role::findOrCreate('admin');
 
-        $admin->assignRole([$roleWebAdmin]);
+        $admin->assignRole([$roleAdmin]);
 
     }
     private function attachImageToUser(User $user, $imageName)
