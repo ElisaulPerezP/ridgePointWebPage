@@ -43,8 +43,8 @@ class QuoteController extends Controller
         $Quote->name = $request->input('name');
         $Quote->phone = $request->input('phone');
 
-        if ($request->has('phone')) {
-            $Quote->phone = $request->input('phone');
+        if ($request->has('email')) {
+            $Quote->email = $request->input('email');
         }
 
         $Quote->description = $request->input('description');
