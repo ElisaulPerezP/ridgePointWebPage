@@ -14,13 +14,18 @@ return new class extends Migration
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('phone')->nullable(); 
+            $table->string('email')->nullable(); 
             $table->text('description');
-            $table->string('message');
+            $table->string('message')->nullable();
             $table->date('creation_date');
             $table->string('creation_place');
-            $table->string('image_rights');
+            $table->string('image_rights')->nullable();
+            $table->date('response_date')->nullable(); 
+            $table->text('response_message')->nullable();
             $table->timestamps();
         });
+        
     }
 
     /**

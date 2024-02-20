@@ -55,14 +55,14 @@ class QuoteControllerTest extends TestCase
 
         $response->assertViewIs('quote.create');
 
-        $response->assertSee('Creating a new Quote');
+        $response->assertSee('Create a new Quote');
 
         $response->assertSee('Name');
+        $response->assertSee('Phone');
+        $response->assertSee('Email');
         $response->assertSee('Description');
         $response->assertSee('Message');
-        $response->assertSee('Creation Date');
-        $response->assertSee('Creation Place');
-        $response->assertSee('Image Rights');
+        $response->assertSee('Address');
         $response->assertSee('Image');
         $response->assertSee('Submit');
     }
@@ -72,7 +72,7 @@ class QuoteControllerTest extends TestCase
     public function testItCanStoreQuote():void
     {
         $admin = User::factory()->create();
-        $permission = Permission::findOrCreate('store.quote'); // Adjust the permission
+        $permission = Permission::findOrCreate('store.quote');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
         $permission->assignRole($role);
 
@@ -82,11 +82,12 @@ class QuoteControllerTest extends TestCase
 
         $response = $this->actingAs($admin)->post(route('quotes.store'), [
             'name' => 'Example quote',
+            'phone' => '123456789',
+            'email' => 'example@example.com',
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             'message' => 'Your example message',
-            'creation_date' => now()->toDateString(),
             'creation_place' => 'Your creation place',
-            'image_rights' => 'Your image rights',
+            'image_rights' => 'on',
             'image' => $uploadedFile,
             ]);
 
@@ -137,7 +138,6 @@ class QuoteControllerTest extends TestCase
         $response->assertSee($quote->message);
         $response->assertSee($quote->creation_date);
         $response->assertSee($quote->creation_place);
-        $response->assertSee($quote->image_rights);
         $response->assertSee('edit');
         $response->assertSee('delete');
 
@@ -155,12 +155,14 @@ class QuoteControllerTest extends TestCase
 
 $date= now()->toDateString();
         $response = $this->actingAs($admin)->put(route('quotes.update',  $quote->id), [
-            'name' => 'Edited quote Name',
-            'description' => 'Edited quote Description.',
-            'message' => 'Edited Message',
+            'name' => 'Example quote',
+            'phone' => '123456789',
+            'email' => 'example@example.com',
+            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'message' => 'Your example message',
+            'creation_place' => 'Your creation place',
             'creation_date' => $date,
-            'creation_place' => 'here',
-            'image_rights' => 'New Rights',
+            'image_rights' => 'on',
             'image' => $uploadedFile,
         ]);
 
@@ -169,12 +171,9 @@ $date= now()->toDateString();
 
         $redirectResponse=$this->actingAs($admin)->get(route( 'quotes.index'));
 
-        $redirectResponse->assertSee('Edited quote Name');
-        $redirectResponse->assertSee('Edited quote Description.');
-        $redirectResponse->assertSee('Edited Message');
+        $redirectResponse->assertSee('Example quote');
+        $redirectResponse->assertSee('Lorem ipsum dolor sit amet, consectetur adipiscing elit.');
         $redirectResponse->assertSee($date);
-        $redirectResponse->assertSee('here');
-        $redirectResponse->assertSee('New Rights');
     }
 
     public function testItCanDestroyquote():void

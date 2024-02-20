@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Support\Carbon;
 
 class Quote extends Model implements HasMedia
 {
@@ -14,22 +15,32 @@ class Quote extends Model implements HasMedia
 
     protected $fillable = [
         'name',
+        'phone',
+        'email',
         'description',
         'message',
         'creation_date',
         'creation_place',
         'image_rights',
+        'response_date',
+        'response_message',
     ];
 
-    protected $dates = ['creation_date'];
+    protected $dates = ['creation_date','response_date', 'response_message',];
 
-    // Definir la colección de medios para las imágenes del carrusel
+    public static function boot()
+    {
+        parent::boot();
+        static::creating(function ($quote) {
+            $quote->creation_date = Carbon::now()->toDateString();
+        });
+    }
+    
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('quote_images')->singleFile();
     }
 
-    // Método para obtener la URL de la imagen del carrusel
     public function getImageUrl(): ?string
     {
         $media = $this->getFirstMedia('quote_images');
@@ -37,7 +48,6 @@ class Quote extends Model implements HasMedia
         return $media ? $media->getUrl() : null;
     }
 
-    // Método para obtener la URL del primer recurso multimedia del carrusel
     public function getImage(): ?string
     {
         $media = $this->getFirstMedia('quote_images');

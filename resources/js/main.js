@@ -235,4 +235,54 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+  const form = document.getElementById('quoteForm');
+  if (form) {
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+  
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const description = document.getElementById('description').value;
+      const creationPlace = document.getElementById('creation_place').value;
+      const email = document.getElementById('email').value;
+  
+      let errorMessage = '';
+  
+      if (name.trim() === '') {
+        errorMessage += 'Name is required.\n';
+      }
+      if (description.trim() === '') {
+        errorMessage += 'Description is required.\n';
+      }
+      if (creationPlace.trim() === '') {
+        errorMessage += 'Address place is required.\n';
+      }
+      if (email.trim() !== '') { 
+        if (!validateEmail(email)) {
+          errorMessage += 'Invalid email address.\n';
+        }
+      }
+  
+      if (errorMessage !== '') {
+        alert(errorMessage);
+      } else {
+        form.submit();
+      }
+    });
+  }
+  
+  function validateEmail(email) {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+
+  document.getElementById('image').addEventListener('change', function () {
+    var imageRightsField = document.getElementById('imageRightsField');
+    if (this.files.length > 0) {
+        imageRightsField.style.display = 'block';
+    } else {
+        imageRightsField.style.display = 'none';
+    }
+});
 });

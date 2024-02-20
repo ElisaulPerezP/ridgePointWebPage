@@ -59,7 +59,33 @@ Route::get('/google-callback', function () {
     return redirect( route('dashboard'));
 });
 
-Route::resource('quotes', QuoteController::class)->middleware('auth');
+Route::post('quotes', [QuoteController::class, 'store'])
+    ->middleware('throttle:2,1')
+    ->name('quotes.store');
+
+Route::get('quotes/create', [QuoteController::class, 'create'])
+    ->name('quotes.create');
+
+Route::get('quotes', [QuoteController::class, 'index'])
+    ->middleware('auth')
+    ->name('quotes.index');
+
+Route::get('quotes/{quote}', [QuoteController::class, 'show'])
+    ->middleware('auth')
+    ->name('quotes.show');
+
+Route::get('quotes/{quote}/edit', [QuoteController::class, 'edit'])
+    ->middleware('auth')
+    ->name('quotes.edit');
+
+Route::put('quotes/{quote}', [QuoteController::class, 'update'])
+    ->middleware('auth')
+    ->name('quotes.update');
+
+Route::delete('quotes/{quote}', [QuoteController::class, 'destroy'])
+    ->middleware('auth')
+    ->name('quotes.destroy');
+
 
 
 Route::resource('pendingMatters', PendingMatterController::class)->middleware(['auth', 'verified', 'role:admin']);

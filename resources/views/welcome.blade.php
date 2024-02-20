@@ -41,6 +41,15 @@
     @endslot
     @slot('contactForm')
         <section id="get-started" class="get-started section-bg">
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <div class="container">
 
                 <div class="row justify-content-between gy-4">
@@ -53,37 +62,54 @@
                     </div>
 
                     <div class="col-lg-5" data-aos="fade">
-                        <form action="{{ route('quotes.store') }}" class="php-email-form" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('quotes.store') }}" class="php-email-form" id="quoteForm" method="POST" enctype="multipart/form-data">
                             @csrf
                             <h3>Get a quote</h3>
                             <p>Please fill out the following form, and we will contact you shortly.</p>
+                            <p>The * marks the mandatory fields.<p>
                             <div class="row gy-3">
                             <div class="col-md-12">
-                            <input type="text" name="name" class="form-control" placeholder="Name"  value="{{ old('name') }}">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Name*"  value="{{ old('name') }}">
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone*">
+                            @error('phone')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="col-md-12">
-                            <input type="text" class="form-control" name="description" placeholder="Description">
+                            <input type="text" id="email" name="email" class="form-control" placeholder="Email">
+                            @error('email')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-md-12">
+                            <input type="text" class="form-control"  id="description" name="description" placeholder="Description*">
                         </div>
 
                         <div class="col-md-12">
-                            <input type="text" class="form-control" name="message" placeholder="Message">
+                            <input type="text" class="form-control" id="message" name="message" placeholder="Message">
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" id="creation_place" name="creation_place" placeholder="Address*">
                         </div>
 
                         <div class="col-md-12">
-                            <input type="text" class="form-control" name="creation_date" placeholder="Creation Date">
+                            <label for="image">Image:</label>
+                            <input type="file" class="form-control" id="image" name="image" accept="image/*">
                         </div>
 
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" name="creation_place" placeholder="Creation Place">
+                        <div id="imageRightsField" class="col-md-12" style="display: none;">
+                            
+                        <div style="border: 2px solid red; padding: 10px;">
+                        <input type="checkbox" class="green-checkbox" id="image_rights" name="image_rights">
+                            
+                        <label for="image_rights">I am the owner of the rights to this image, I grant the rights to this image to Ridgpoint.</label>
                         </div>
-
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" name="image_rights" placeholder="Image Rights">
                         </div>
-
-                        <label for="image">Image:</label>
-                        <input type="file" class="form-control" name="image" accept="image/*">
 
                                 <div class="col-md-12 text-center">
                                     <div class="loading">Loading</div>

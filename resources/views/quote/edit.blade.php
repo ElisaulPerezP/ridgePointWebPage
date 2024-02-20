@@ -10,47 +10,73 @@
     </x-slot>
     <x-slot name="slotMain">
         <section id="editResource" class="get-started section-bg">
-            <div class="col-lg-5" data-aos="fade">
-                <form action="{{ route('quotes.update', $quote->id) }}" class="php-email-form" method="POST" enctype="multipart/form-data">
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+            <div class="col-lg-5 container" data-aos="fade">
+                <form action="{{ route('quotes.update', $quote->id) }}" id="quoteForm" class="php-email-form" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <h3>Editing image</h3>
-                    <p>Be cautious, the changes made to the image are not reversible.</p>
+                    <p>Be cautious, the changes made to the image are not reversible. fields whith * cant be null</p>
                     <div class="row gy-3">
                         <div class="col-md-12">
                             <label for="name">Name:</label>
-                            <input type="text" name="name" class="form-control" value="{{ $quote->name }}" placeholder="Enter name">
+                            <input type="text" name="name" class="form-control" value="{{ $quote->name }}"  id="name" placeholder="Name*">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="name">Phone:</label>
+                            <input type="text" id="phone" name="phone" class="form-control" value="{{ $quote->phone }}" placeholder="Phone*">
+                        </div>
+
+
+                        <div class="col-md-12">
+                            <label for="name">Email:</label>
+                            <input type="text" id="email" name="email" class="form-control" value="{{ $quote->email }}" placeholder="Email">
                         </div>
 
                         <div class="col-md-12">
                             <label for="description">Description:</label>
-                            <input type="text" class="form-control" name="description" value="{{ $quote->description }}" placeholder="Enter description">
+                            <input type="text" class="form-control" value="{{ $quote->description }}" id="description" name="description" placeholder="Description*">
                         </div>
 
                         <div class="col-md-12">
                             <label for="message">Message:</label>
-                            <input type="text" class="form-control" name="message" value="{{ $quote->message }}" placeholder="Enter message">
+                            <input type="text" class="form-control" value="{{ $quote->message }}" id="message" name="message" placeholder="Message">
                         </div>
 
                         <div class="col-md-12">
                             <label for="creation_date">Creation Date:</label>
-                            <input type="text" class="form-control" name="creation_date" value="{{ $quote->creation_date }}" placeholder="Enter creation date">
+                            <input type="text" class="form-control" value="{{ $quote->creation_date }}" name="creation_date" value="{{ $quote->creation_date }}" placeholder="Enter creation date">
                         </div>
 
                         <div class="col-md-12">
                             <label for="creation_place">Creation Place:</label>
-                            <input type="text" class="form-control" name="creation_place" value="{{ $quote->creation_place }}" placeholder="Enter creation place">
+                            <input type="text" class="form-control" value="{{ $quote->creation_place }}" id="creation_place" name="creation_place" placeholder="Address*">
                         </div>
 
-                        <div class="col-md-12">
-                            <label for="image_rights">Image Rights:</label>
-                            <input type="text" class="form-control" name="image_rights" value="{{ $quote->image_rights }}" placeholder="Enter image rights">
-                        </div>
 
                         <div class="col-md-12">
                             <label for="image">Image:</label>
-                            <input type="file" class="form-control" name="image" accept="image/*">
+                            <input type="file" class="form-control" value="{{ $quote->image }}" id="image" name="image" accept="image/*">
                         </div>
+
+
+                        <div id="imageRightsField" class="col-md-12" style="display: none;">
+                            
+                            <div style="border: 2px solid red; padding: 10px;">
+                            <input type="checkbox" class="green-checkbox" value="{{ $quote->name }}" id="image_rights" name="image_rights">
+                                
+                            <label for="image_rights">I am the owner of the rights to this image, I grant the rights to this image to Ridgpoint.</label>
+                            </div>
+                            </div>
 
                         @if ($quote->hasMedia('quote_images'))
                             <div class="col-md-12 mt-4">
@@ -61,18 +87,6 @@
                         @else
                             <div class="col-md-12 mt-4">
                                 <p>No Original Image</p>
-                            </div>
-                        @endif
-
-                        @if (request()->hasFile('image'))
-                            <div class="col-md-12 mt-4">
-                                <p>New Image Preview:</p>
-                                <img src="{{ URL::asset('path-to-your-temporary-image') }}" alt="New quote Image">
-                                <p>New Caption: {{ request()->input('new_caption') }}</p>
-                            </div>
-                        @else
-                            <div class="col-md-12 mt-4">
-                                <p>No New Image Selected</p>
                             </div>
                         @endif
 
