@@ -16,7 +16,13 @@
             <div class="">
                 <nav id="navbar" class="navbar">
                     <ul>
-                        <li><a  href="{{ route('welcome') }}" class="active">Home</a></li>
+                    <li><a href="{{ route('welcome') }}" class="{{ request()->is('/') ? 'active' : '' }}">Home</a></li>
+
+                        @can('viewAny', App\Models\Quote::class)
+                            <li><a href="{{ route('quotes.index') }}" class="{{ request()->is('quotes*') ? 'active' : '' }}">My quotes</a></li>
+                        @endcan
+
+                                                
                         <li><a href="{{ route('welcome') }}">About</a></li>
                         <li><a href="{{ route('welcome') }}">Services</a></li>
                         <li><a href="{{ route('welcome') }}">Projects</a></li>

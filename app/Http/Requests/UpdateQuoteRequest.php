@@ -24,15 +24,15 @@ class UpdateQuoteRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'phone' => 'required|string|max:20',
-            'email' => 'email|max:50',
+            'email' => 'nullable|email|max:50',
             'description' => 'required|string|max:5000',
-            'message' => 'string|max:5000',
-            'creation_date' => 'date',
-            'creation_place' => 'string|max:255',
-            'image_rights' => 'string|max:5000',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'response_date'=> 'date',
-            'response_message' => 'string|max:5000',
+            'message' => 'nullable|string|max:5000',
+            'creation_date' => 'nullable|date',
+            'creation_place' => 'nullable|string|max:255',
+            'image_rights' => 'nullable|string|max:5000',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'response_date'=> 'nullable|date',
+            'response_message' => 'nullable|string|max:5000',
         ];
     }
       

@@ -55,7 +55,9 @@
                     @endif
 
                     <div class="col-md-9 text-center mt-4">
-                        <a href="{{ route('quotes.edit', $quote->id) }}" class="btn btn-primary">Edit</a>
+                        @can('update', $quote)
+                            <a href="{{ route('quotes.edit', $quote->id) }}" class="btn btn-secondary">Editar</a>
+                        @endcan
                     </div>
                 </div>
             </div>

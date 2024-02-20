@@ -22,7 +22,7 @@ class QuoteControllerTest extends TestCase
         $admin = User::factory()->create();
         $permission = Permission::findOrCreate('index.quote');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $admin->assignRole($role);
 
         $response=$this->actingAs($admin)->get(route( 'quotes.index'));
 
@@ -104,7 +104,7 @@ class QuoteControllerTest extends TestCase
         $admin = User::factory()->create();
         $permission = Permission::findOrCreate('show.quote');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $admin->assignRole($role);
         $response = $this->actingAs($admin)->get(route('quotes.show', ['quote' => $quote->id]));
         $response->assertOk();
 
@@ -126,7 +126,7 @@ class QuoteControllerTest extends TestCase
         $admin = User::factory()->create();
         $permission = Permission::findOrCreate('edit.quote');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $admin->assignRole($role);
 
         $response = $this->actingAs($admin)->get(route('quotes.edit', ['quote' => $quote->id]));
         $response->assertOk();
@@ -148,7 +148,7 @@ class QuoteControllerTest extends TestCase
         $admin = User::factory()->create();
         $permission = Permission::findOrCreate('update.quote');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $admin->assignRole($role);
 
         $imagePath = storage_path('app/public/images/muestra.jpg');
         $uploadedFile = new UploadedFile($imagePath, 'muestra.jpg', 'image/jpeg', null, true);
@@ -182,7 +182,7 @@ $date= now()->toDateString();
         $admin = User::factory()->create();
         $permission = Permission::findOrCreate('destroy.quote');
         $role = Role::findOrCreate('admin')->givePermissionTo($permission);
-        $permission->assignRole($role);
+        $admin->assignRole($role);
         $this->assertDatabaseCount('quotes', 1);
 
         $response = $this->actingAs($admin)->delete(route('quotes.destroy', ['quote' => $quote->id]));

@@ -10,6 +10,7 @@ use Illuminate\Support\Carbon;
 
 class Quote extends Model implements HasMedia
 {
+    protected $policy = QuotePolicy::class;
     use HasFactory;
     use InteractsWithMedia;
 

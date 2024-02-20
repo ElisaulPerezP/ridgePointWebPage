@@ -50,8 +50,13 @@
                                 @endif
 
                                 <div class="mt-4">
-                                    <a href="{{ route('quotes.edit', $quote->id) }}"
-                                       class="text-blue-500 hover:underline">Editar</a>
+                                    @can('view', $quote)
+                                        <a href="{{ route('quotes.show', $quote->id) }}" class="btn btn-primary">Ver</a>
+                                    @endcan
+                                    
+                                    @can('update', $quote)
+                                        <a href="{{ route('quotes.edit', $quote->id) }}" class="btn btn-secondary">Editar</a>
+                                    @endcan
                                 </div>
                             </div>
                         @endforeach

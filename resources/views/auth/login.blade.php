@@ -11,6 +11,17 @@
     @endslot
     @slot('slotMain')
         <section id="editForm" class="get-started section-bg">
+        @if(session('success'))
+                    <div class="alert alert-success container">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
             <div class="container" data-aos="fade-up">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
                     <!-- Session Status -->
@@ -18,9 +29,17 @@
 
                     <form method="POST" action="{{ route('login') }}" class="php-email-form">
                         @csrf
+                        <div class="php-email-form">
+
+                        </div>
                         <div class="flex items-center justify-center mt-4">
                             <a href="{{ route('google.login') }}">
                                 <img src="https://developers.google.com/identity/images/btn_google_signin_dark_normal_web.png" alt="Log in with Google" class="ml-2" data-aos="fade-left">
+                            </a>
+                            <a  href="{{ route('register') }}">
+                            <x-secondary-button class="ms-3">
+                                {{ __('Sing up') }}
+                            </x-secondary-button>
                             </a>
                         </div>
                         <!-- Email Address -->
@@ -67,14 +86,7 @@
                             </x-primary-button>
                         </div>
                     </form>
-                    <div class="php-email-form">
-                    <a  href="{{ route('register') }}">
-                        <x-secondary-button class="ms-3">
-                        Don't you have an account?
-                                {{ __('Singup') }}
-                            </x-secondary-button>
-                            </a>
-                        </div>
+
                 
                         </div>
 
