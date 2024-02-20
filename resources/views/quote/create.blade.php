@@ -28,17 +28,17 @@
                             <p>The * marks the mandatory fields.<p>
                             <div class="row gy-3">
                             <div class="col-md-12">
-                            <input type="text" name="name" class="form-control" id="name" placeholder="Name*"  value="{{ old('name') }}">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Name*"  value="{{ auth()->check() ? auth()->user()->name : '' }}">
                         </div>
                         <div class="col-md-12">
-                            <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone*">
+                            <input type="text" id="phone" name="phone" class="form-control" placeholder="Phone*" value="{{ auth()->check() ? auth()->user()->phone : '' }}">
                             @error('phone')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="col-md-12">
-                            <input type="text" id="email" name="email" class="form-control" placeholder="Email">
+                            <input type="text" id="email" name="email" class="form-control" placeholder="Email" value="{{ auth()->check() ? auth()->user()->email : '' }}">
                             @error('email')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
