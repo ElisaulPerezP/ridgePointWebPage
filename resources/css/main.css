@@ -2868,6 +2868,10 @@ section {
   color: #ffffff;
 }
 
+.green-checkbox {
+  color: green;
+}
+
 /* phone se*/
 @media screen and (max-width: 667px){
   .subtitle{

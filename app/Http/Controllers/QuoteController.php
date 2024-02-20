@@ -27,21 +27,36 @@ class QuoteController extends Controller
 
     public function store(StoreQuoteRequest $request)
     {
-        $imagePath = $request->file('image')->store('quote_images', 'public');
-
         $Quote = new Quote();
         $Quote->name = $request->input('name');
+        $Quote->phone = $request->input('phone');
+
+        if ($request->has('phone')) {
+            $Quote->email = $request->input('email');
+        }
+
         $Quote->description = $request->input('description');
         $Quote->message = $request->input('message');
         $Quote->creation_date = $request->input('creation_date');
         $Quote->creation_place = $request->input('creation_place');
-        $Quote->image_rights = $request->input('image_rights');
 
-        $Quote->addMedia(storage_path("app/public/{$imagePath}"))->preservingOriginal()->toMediaCollection('quote_images');
+        if ($request->has('response_date')) {
+            $Quote->response_date = $request->input('response_date');
+        }
+
+        if ($request->has('response_message')) {
+            $Quote->response_message = $request->input('response_message');
+        }
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('quote_images', 'public');
+            $Quote->addMedia(storage_path("app/public/{$imagePath}"))->preservingOriginal()->toMediaCollection('quote_images');
+            $Quote->image_rights = $request->input('image_rights');
+        }
 
         $Quote->save();
 
-        return redirect()->intended(route('quotes.index'));
+        return redirect()->intended(route('quotes.index'))->with('success', 'Your quote request has been successfully created. We will contact you as soon as possible.');
     }
 
 
@@ -70,14 +85,31 @@ class QuoteController extends Controller
             $Quote->clearMediaCollection('quote_images');
         
             $Quote->addMedia(storage_path("app/public/{$newImagePath}"))->preservingOriginal()->toMediaCollection('quote_images');
+            $Quote->image_rights = $request->input('image_rights');
         }
 
         $Quote->name = $request->input('name');
+
+        if ($request->has('email')) {
+            $Quote->email = $request->input('email');
+        }
+
         $Quote->description = $request->input('description');
-        $Quote->message = $request->input('message');
+        
+        if ($request->has('message')) {
+            $Quote->message = $request->input('message');
+        }
+
         $Quote->creation_date = $request->input('creation_date');
         $Quote->creation_place = $request->input('creation_place');
-        $Quote->image_rights = $request->input('image_rights');
+        
+        if ($request->has('response_date')) {
+            $Quote->response_date = $request->input('response_date');
+        }
+
+        if ($request->has('response_message')) {
+            $Quote->response_message = $request->input('response_message');
+        }
 
         $Quote->save();
 
